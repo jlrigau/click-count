@@ -19,13 +19,16 @@ metadata:
   name: clickcount-service
   labels:
     app: clickcount
+    role: frontend
     dns: route53
   annotations:
     domainName: {{ namespace }}.k8s.uo.techx.fr
 spec:
   type: "LoadBalancer"
   ports:
-  - port: 8080
+  - name: web
+    port: 8080
+    protocol: TCP
   selector:
     app: clickcount
     role: frontend
