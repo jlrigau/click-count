@@ -6,6 +6,9 @@ podTemplate(label: 'mavenPod', inheritFrom: 'mypod',
 ) {
 
     node('mavenPod') {
+
+        checkout scm
+
         def namespace = "click-count-${env.BRANCH_NAME}"
 
         def version
