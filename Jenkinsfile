@@ -9,7 +9,7 @@ podTemplate(label: 'mavenPod', inheritFrom: 'mypod',
 
         checkout scm
 
-        def namespace = "click-count-${env.BRANCH_NAME}"
+        def namespace = "click-count-${env.BRANCH_NAME}".toLowerCase()
 
         def version
         sh 'env'
