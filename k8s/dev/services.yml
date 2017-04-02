@@ -9,6 +9,7 @@ spec:
     port: 6379
     targetPort: 6379
     protocol: TCP
+  selector:
     app: clickcount
     role: database
 
@@ -22,7 +23,7 @@ metadata:
     role: frontend
     dns: route53
   annotations:
-    domainName: {{ namespace }}.k8s.uo.techx.fr
+    domainName: "{{ namespace }}.k8s.uo.techx.fr"
 spec:
   type: "LoadBalancer"
   ports:
