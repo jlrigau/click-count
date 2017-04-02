@@ -22,7 +22,7 @@ metadata:
     dns: route53
   annotations:
       domainName: "{{ namespace }}.k8s.uo.techx.fr"
-  type: Loadbalancer
+  type: LoadBalancer
   ports:
   - port: 8080
   selector:
