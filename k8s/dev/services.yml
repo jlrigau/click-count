@@ -23,7 +23,7 @@ metadata:
   annotations:
     domainName: {{ namespace }}.k8s.uo.techx.fr
 spec:
-  type: LoadBalancer
+  type: "LoadBalancer"
   ports:
   - port: 8080
   selector:
