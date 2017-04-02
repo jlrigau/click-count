@@ -1,24 +1,56 @@
 <html>
 <head>
+    <link rel="stylesheet" href="https://unpkg.com/purecss@0.6.2/build/pure-min.css">
     <script src="static/js/jquery-2.1.4.min.js"></script>
-</head>
+    <script>
+        $(document).ready(function () {
+            $.get("rest/click", function (data) {
+                $('#count').text(data);
+            });
+            $('#clickButton').click(function () {
+                $.post("rest/click", function (data) {
+                    $('#count').text(data);
+                });
+            })
+        });
+    </script>
+    <style>
+        body {
+            text-align: center;
+        }
 
+        .button-click {
+            color: white;
+            border-radius: 4px;
+            text-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
+            background: rgb(28, 184, 65);
+        }
+
+        .pure-img {
+            width: auto;
+            margin: auto;
+        }
+
+        .count {
+            font-size: 2em;
+        }
+        .container{
+            height: 430px;
+            position: relative;
+            margin-top:-215px;
+            top:50%;
+        }
+    </style>
+</head>
 <body>
-<div>
-    <b>click count : </b><span id="count"></span> <br/><br/>
-    <input id="clickButton" type="button" value="click"/>
+<div class="container">
+    <img class="pure-img" src="static/img/devoxx.png">
+    <div class="count">
+        <b>click count : </b><span id="count"></span>
+    </div>
+    <div>
+        <input id="clickButton" class="button-click pure-button" type="button" value="click"/>
+    </div>
 </div>
 </body>
 </html>
-<script>
-    $(document).ready(function () {
-        $.get("rest/click", function (data) {
-            $('#count').text(data);
-        });
-        $('#clickButton').click(function () {
-            $.post("rest/click", function (data) {
-                $('#count').text(data);
-            });
-        })
-    });
-</script>
