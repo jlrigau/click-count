@@ -28,7 +28,7 @@ podTemplate(label: 'mavenPod', inheritFrom: 'mypod',
         }
 
         stage('Build image') {
-            sh "docker build -t ${imageTag} applications/click-count"
+            sh "docker build -t ${imageTag} ."
         }
 
         stage('Push image') {
