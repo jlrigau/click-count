@@ -12,7 +12,7 @@ spec:
     spec:
       containers:
       - name: clickcount
-        image: __FRONTEND_IMAGE__
+        image: {{ frontend_image }}
         resources:
           requests:
             cpu: 100m
