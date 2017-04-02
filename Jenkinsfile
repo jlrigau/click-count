@@ -39,6 +39,7 @@ podTemplate(label: 'mavenPod', inheritFrom: 'mypod',
             sh("kubectl get ns ${namespace} || kubectl create ns ${namespace}")
             sh "sed -i.bak 's#{{ frontend_image }}#${imageTag}#' ./k8s/dev/*.yml"
             sh "sed -i.bak 's#{{ namespace }}#${namespace}#' ./k8s/dev/*.yml"
+            sh 'cat ./k8s/dev/*.yml'
             sh "kubectl --namespace=${namespace} apply -f k8s/dev/"
             echo 'To access your environment run `kubectl proxy`'
             echo "Then access your service via http://localhost:8001/api/v1/proxy/namespaces/${namespace}/services/clickcount-service:8080/"
