@@ -9,6 +9,7 @@ podTemplate(label: 'mavenPod', inheritFrom: 'mypod',
         def namespace = "click-count-${env.BRANCH_NAME}"
 
         def version
+        sh 'env'
         sh "git rev-parse --short HEAD > GIT_COMMIT"
         version = readFile('GIT_COMMIT').take(6)
         String imageTag = "10.233.57.46:5000/xebiafrance/uo-click-count:${version}"
