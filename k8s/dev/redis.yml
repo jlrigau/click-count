@@ -14,6 +14,8 @@ spec:
       containers:
       - name: redis
         image: redis
+        command: [ "redis-server" ]
+        args: [ "--appendonly", "yes" ]
         resources:
           requests:
             cpu: 100m
@@ -21,3 +23,23 @@ spec:
         ports:
         - name: redis
           containerPort: 6379
+        volumeMounts:
+            - mountPath: /data
+              name: redis-data
+      volumes:
+      - name: redis-data
+        persistentVolumeClaim:
+          claimName: redis-vol-claim
+---
+apiVersion: "v1"
+kind: "PersistentVolumeClaim"
+metadata:
+  name: redis-vol-claim
+  annotations:
+    volume.beta.kubernetes.io/storage-class: "std"
+spec:
+  "accessModes":
+   - "ReadWriteOnce"
+  resources:
+    requests:
+      storage: "1Gi"
