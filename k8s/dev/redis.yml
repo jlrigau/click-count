@@ -34,7 +34,6 @@ spec:
 apiVersion: "v1"
 kind: "PersistentVolumeClaim"
 metadata:
-  namespace: ci
   name: redis-vol-claim
   annotations:
     volume.beta.kubernetes.io/storage-class: "std"
